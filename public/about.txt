@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Righteous
+- Font Author: Copyright (c) 2011 by Brian J. Bonislawsky DBA Astigmatic (AOETI) (astigma@astigmatic.com), with Reserved Font Name "Righteous"
+- Font Source: http://fonts.gstatic.com/s/righteous/v14/1cXxaUPXBpj2rGoU7C9mj3uEicG01A.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

@@ -1,24 +1,13 @@
 ---
 import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostsList from "../../components/PostsList.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
 <BaseLayout>
-  <section>
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <FormattedDate date={post.data.pubDate} />
-            <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+  <PostsList heading="All Posts" posts={posts} />
 </BaseLayout>

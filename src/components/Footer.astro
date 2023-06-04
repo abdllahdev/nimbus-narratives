@@ -3,15 +3,19 @@ import { Icon } from "astro-icon";
 const today = new Date();
 ---
 
-<footer class="flex content-center justify-between py-4">
-  <div class="flex content-center space-x-5">
+<footer class="flex content-center justify-between py-10">
+  <div class="flex content-center space-x-2">
     <a href="https://twitter.com/algorizr" target="_blank">
-      <Icon name="mdi:twitter" size="24px" />
+      <Icon name="mdi:twitter" size="32px" class="rounded-md p-1 hover:bg-slate-800" />
       <span class="sr-only">Twitter</span>
     </a>
     <a href="https://github.com/algorizr" target="_blank">
-      <Icon name="mdi:github" size="24px" />
+      <Icon name="mdi:github" size="32px" class="rounded-md p-1 hover:bg-slate-800" />
       <span class="sr-only">Github</span>
+    </a>
+    <a href="/rss.xml" target="_blank">
+      <Icon name="mdi:rss" size="32px" class="rounded-md p-1 hover:bg-slate-800" />
+      <span class="sr-only">RSS</span>
     </a>
   </div>
   <p>&copy; {today.getFullYear()} Abdullah Elsayed</p>
