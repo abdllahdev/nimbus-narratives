@@ -48,4 +48,3 @@ All commands are run from the root of the project, from a terminal:
 - [ ] Add fuzzy search
 - [ ] Add table of contents
 - [ ] Add likes and views
-- [ ] Add lint staged and commitlint
