@@ -1,0 +1,43 @@
+code {
+  counter-reset: line;
+}
+
+div[data-rehype-pretty-code-fragment] {
+  @apply space-y-0;
+}
+
+div[data-rehype-pretty-code-fragment] pre {
+  @apply p-0 py-5 rounded-lg overflow-x-auto bg-blue-950;
+}
+
+div[data-rehype-pretty-code-fragment][data-rehype-pretty-code-fragment]
+  > div[data-rehype-pretty-code-title]
+  + pre {
+  @apply rounded-t-none;
+}
+
+code > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply pr-4;
+}
+
+div[data-rehype-pretty-code-title] {
+  @apply flex p-2 px-4 rounded-t-lg items-start w-full text-slate-900 bg-blue-400;
+}
+
+div[data-rehype-pretty-code-fragment] pre > code {
+  @apply flex flex-col;
+}
+
+div[data-rehype-pretty-code-fragment] .line {
+  @apply border-l-4 border-transparent px-4;
+}
+
+div[data-rehype-pretty-code-fragment] .highlighted {
+  @apply border-blue-400 bg-blue-200/20;
+}
+
+img {
+  @apply rounded-xl;
+}

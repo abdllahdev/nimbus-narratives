@@ -7,21 +7,25 @@ export interface Props {
   posts: CollectionEntry<"blog">[];
 }
 
-const { heading, posts } = Astro.props;
+const { posts } = Astro.props;
 ---
 
-<section class="max-w-screen-md">
-  <h2 class="text-2xl text-primary font-semibold pt-4 pb-2">{heading}</h2>
-  <ul class="flex flex-col max-w-screen-md">
+<section class="py-10">
+  <ul class="flex flex-col space-y-4">
     {
       posts.map((post) => (
         <li>
           <a
             href={`/blog/${post.slug}`}
-            class="flex justify-between items-center rounded-md py-2 px-4 hover:bg-slate-800"
+            class="flex flex-col items-start space-y-4 rounded-lg p-6 bg-slate-500/30 hover:bg-slate-500/50"
           >
-            <span class="truncate w-9/12">{post.data.title}</span>
-            <FormattedDate date={post.data.pubDate} />
+            <div class="flex flex-col items-start space-y-1">
+              <span class="text-lg font-medium">{post.data.title}</span>
+              <span class="text-sm font-thin">
+                <FormattedDate date={post.data.pubDate} />
+              </span>
+            </div>
+            <p class=" text-base font-thin">{post.data.description}</p>
           </a>
         </li>
       ))

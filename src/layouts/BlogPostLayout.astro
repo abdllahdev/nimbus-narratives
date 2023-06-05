@@ -9,22 +9,20 @@ const { title, description, pubDate, updatedDate, heroImage, heroImageAlt } = As
 ---
 
 <BaseLayout title={title} description={description}>
-  <article>
-    {heroImage && <img class="w-full" height={360} src={heroImage} alt={heroImageAlt} />}
-    <h1 class="text-4xl font-bold pt-4">{title}</h1>
-    <div class="py-4">
-      <div class="font-light">
-        Published on <FormattedDate date={pubDate} />
-      </div>
-      {
-        updatedDate && (
-          <div class="font-light">
-            Last updated on <FormattedDate date={updatedDate} />
-          </div>
-        )
-      }
+  <article class="prose max-w-none dark:prose-invert">
+    {heroImage && <img src={heroImage} alt={heroImageAlt} />}
+    <h1>{title}</h1>
+    <div class="font-light">
+      Published on <FormattedDate date={pubDate} />
     </div>
-    <div class="border-t-2 pb-5"></div>
+    {
+      updatedDate && (
+        <div class="font-light">
+          Last updated on <FormattedDate date={updatedDate} />
+        </div>
+      )
+    }
+    <div class="border-t"></div>
     <slot />
   </article>
 </BaseLayout>

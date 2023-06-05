@@ -18,11 +18,9 @@ If you have existing content authored in MDX, this integration will hopefully ma
 Here is how you import and use a UI component inside of MDX.  
 When you open this page in the browser, you should see the clickable button below.
 
-import HeaderLink from "../../components/HeaderLink.astro";
-
-<HeaderLink href="#" onclick="alert('clicked!')">
+<a href="#" onclick="alert('clicked!')">
   Embedded component in MDX
-</HeaderLink>
+</a>
 
 ## More Links
 
@@ -30,8 +28,14 @@ import HeaderLink from "../../components/HeaderLink.astro";
 - [Astro Usage Documentation](https://docs.astro.build/en/guides/markdown-content/#markdown-and-mdx-pages)
 - **Note:** [Client Directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) are still required to create interactive components. Otherwise, all components in your MDX will render as static HTML (no JavaScript) by default.
 
-```js
+```js title="example.js"
 function testFunction() {
-  return null;
+  const x = 1;
+  const y = 2;
+  return x + y;
 }
+```
+
+```ocaml
+let myFun x y = x + y
 ```

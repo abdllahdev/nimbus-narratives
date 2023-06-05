@@ -9,5 +9,5 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <BaseLayout>
-  <PostsList heading="All Posts" posts={posts} />
+  <PostsList posts={posts} />
 </BaseLayout>

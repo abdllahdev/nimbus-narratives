@@ -3,22 +3,24 @@ import PostsList from "../components/PostsList.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog"))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
 <BaseLayout>
-  <h1 class="text-3xl font-black pb-4">
-    Hi, <span
-      class="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400"
-      >I'm Abdullah Elsayed!</span
-    >
-  </h1>
-  <p>
-    Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-    serves as a lightweight, minimally-styled starting point for anyone looking to build a personal website,
-    blog, or portfolio with Astro.
-  </p>
-  <PostsList heading="Latest Posts" posts={posts} />
+  <div class="space-y-4 py-10">
+    <h1 class="text-3xl font-black">
+      Hi, <span
+        class="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400"
+        >I'm Abdullah Elsayed!</span
+      >
+    </h1>
+    <p>
+      Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
+      serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
+      website, blog, or portfolio with Astro.
+    </p>
+  </div>
+  <PostsList posts={posts} />
 </BaseLayout>
