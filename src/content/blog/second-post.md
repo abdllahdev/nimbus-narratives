@@ -1,9 +1,10 @@
 ---
 title: "Second post very long title very long title very long title very long title very long title very long title"
 description: "Lorem ipsum dolor sit amet"
+tags: ["test", "md", "mdx"]
 pubDate: "22 Jul 2022"
 updatedDate: "25 Jul 2023"
-heroImage: "/placeholder-hero.jpg"
+ogImage: "/placeholder-hero.jpg"
 ---
 
 ## Hello

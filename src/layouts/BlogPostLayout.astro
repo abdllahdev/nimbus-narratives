@@ -5,24 +5,39 @@ import BaseLayout from "./BaseLayout.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage, heroImageAlt } = Astro.props;
+const { title, description, tags, pubDate, updatedDate, ogImage, ogImageAlt } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
   <article class="prose max-w-none dark:prose-invert">
-    {heroImage && <img src={heroImage} alt={heroImageAlt} />}
     <h1>{title}</h1>
-    <div class="font-light">
-      Published on <FormattedDate date={pubDate} />
+    <div class="font-bold text-xs uppercase space-y-3">
+      <div class="flex flex-col">
+        <span>
+          Published on <FormattedDate date={pubDate} />
+        </span>
+        {
+          updatedDate && (
+            <span>
+              Updated on <FormattedDate date={updatedDate} />
+            </span>
+          )
+        }
+      </div>
+      <div class="flex space-x-2 items-center">
+        {
+          tags.map((tag) => (
+            <a
+              href={`/tags/${tag}`}
+              class="bg-slate-500/30 hover:bg-slate-500/50 p-1 px-2 rounded-sm no-underline"
+            >
+              {tag}
+            </a>
+          ))
+        }
+      </div>
     </div>
-    {
-      updatedDate && (
-        <div class="font-light">
-          Last updated on <FormattedDate date={updatedDate} />
-        </div>
-      )
-    }
-    <div class="border-t"></div>
+    {ogImage && <img src={ogImage} alt={ogImageAlt} />}
     <slot />
   </article>
 </BaseLayout>

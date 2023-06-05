@@ -41,8 +41,8 @@ All commands are run from the root of the project, from a terminal:
 
 ## 📃 Todo
 
+- [x] Add tags to posts
 - [ ] Add OG image generation
-- [ ] Add tags to posts
 - [ ] Add comments to posts
 - [ ] Add share buttons to posts
 - [ ] Add fuzzy search

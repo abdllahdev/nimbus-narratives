@@ -23,7 +23,7 @@ code > .line::before {
 }
 
 div[data-rehype-pretty-code-title] {
-  @apply flex p-2 px-4 rounded-t-lg items-start w-full text-slate-900 bg-blue-400;
+  @apply flex p-2 px-4 rounded-t-lg items-start w-full text-slate-900 bg-blue-500;
 }
 
 div[data-rehype-pretty-code-fragment] pre > code {
@@ -35,7 +35,7 @@ div[data-rehype-pretty-code-fragment] .line {
 }
 
 div[data-rehype-pretty-code-fragment] .highlighted {
-  @apply border-blue-400 bg-blue-200/20;
+  @apply border-blue-500 bg-blue-500/20;
 }
 
 img {
