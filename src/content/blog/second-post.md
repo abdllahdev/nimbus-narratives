@@ -5,7 +5,7 @@ tags:
   - second-post
 pubDate: "22 Jul 2022"
 updatedDate: "25 Jul 2023"
-ogImage: "/placeholder-hero.jpg"
+heroImage: "/placeholder-hero.jpg"
 ---
 
 ## Hello

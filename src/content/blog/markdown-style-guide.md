@@ -5,7 +5,7 @@ tags:
   - markdown
   - guide
 pubDate: "Jul 01 2022"
-ogImage: "/placeholder-hero.jpg"
+heroImage: "/placeholder-hero.jpg"
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

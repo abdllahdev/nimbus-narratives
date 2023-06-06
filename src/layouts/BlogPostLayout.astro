@@ -20,8 +20,8 @@ const {
   tags,
   pubDate,
   updatedDate,
-  ogImage,
-  ogImageAlt,
+  heroImage,
+  heroImageAlt,
   readingTime,
   headings,
 } = Astro.props;
@@ -63,7 +63,7 @@ const {
         }
       </div>
     </div>
-    {ogImage && <img src={ogImage} alt={ogImageAlt} />}
+    {heroImage && <img src={heroImage} alt={heroImageAlt} />}
     <slot />
   </article>
 </BaseLayout>
