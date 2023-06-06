@@ -3,17 +3,22 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import rehypePrettyCode from "rehype-pretty-code";
-
+import { visit } from "unist-util-visit";
+import preact from "@astrojs/preact";
 const rehypePrettyCodeOptions = {
   theme: "dracula",
-
   // Callback hooks to add custom logic to nodes when visiting
   // them.
   onVisitLine(node) {
     // Prevent lines from collapsing in `display: grid` mode, and
     // allow empty lines to be copy/pasted
     if (node.children.length === 0) {
-      node.children = [{ type: "text", value: " " }];
+      node.children = [
+        {
+          type: "text",
+          value: " ",
+        },
+      ];
     }
   },
   onVisitHighlightedLine(node) {
@@ -26,9 +31,10 @@ const rehypePrettyCodeOptions = {
   },
 };
 
+// https://astro.build/config
 export default defineConfig({
   site: "https://algorizr.com",
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [mdx(), sitemap(), tailwind(), preact()],
   markdown: {
     extendDefaultPlugins: true,
     syntaxHighlight: false,

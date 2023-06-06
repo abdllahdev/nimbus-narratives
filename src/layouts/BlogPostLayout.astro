@@ -10,10 +10,10 @@ const { title, description, tags, pubDate, updatedDate, ogImage, ogImageAlt } = 
 
 <BaseLayout title={title} description={description}>
   <article
-    class="prose max-w-none prose-a:font-bold prose-a:text-slate-200 prose-a:underline prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-headings:text-slate-200 prose-p:text-slate-400 dark:prose-invert"
+    class="prose max-w-none prose-slate prose-a:underline-offset-2 prose-a:decoration-blue-600 dark:prose-invert"
   >
-    <div class="not-prose space-y-3">
-      <h1 class="text-4xl text-slate-200">{title}</h1>
+    <h1 class="text-4xl text-white">{title}</h1>
+    <div class="space-y-3">
       <div class="flex flex-col font-bold text-xs uppercase space-y-1">
         <span>
           Published on <FormattedDate date={pubDate} />
@@ -38,8 +38,61 @@ const { title, description, tags, pubDate, updatedDate, ogImage, ogImageAlt } = 
           ))
         }
       </div>
-      {ogImage && <img src={ogImage} alt={ogImageAlt} />}
     </div>
+    {ogImage && <img src={ogImage} alt={ogImageAlt} />}
     <slot />
   </article>
 </BaseLayout>
+
+<script>
+  const codeBlocks = Array.from(document.querySelectorAll("div[data-rehype-pretty-code-fragment]"));
+
+  for (let codeBlock of codeBlocks) {
+    const codeBlockPre = codeBlock.getElementsByTagName("pre")[0];
+
+    // Copy button
+    const copyButton = document.createElement("button");
+    copyButton.className =
+      "p-1 px-2 rounded-md text-xs text-slate-300 bg-slate-800 hover:bg-slate-700";
+    copyButton.innerHTML = "Copy";
+
+    // Header title
+    const titleSpan = document.createElement("span");
+    titleSpan.className = "text-blue-400";
+
+    // Header div
+    const headerDiv = document.createElement("div");
+    headerDiv.className = "flex w-full text-base items-center justify-between py-2 px-4";
+
+    // Current title
+    const titleDiv = codeBlock.querySelector("div[data-rehype-pretty-code-title]");
+
+    // Set title to the language name if no current title is set
+    if (titleDiv) {
+      const title = titleDiv.innerHTML;
+      titleSpan.innerHTML = title;
+      codeBlock.removeChild(titleDiv);
+    } else {
+      titleSpan.innerHTML = codeBlockPre.getAttribute("data-language") as string;
+    }
+
+    headerDiv.appendChild(titleSpan);
+    headerDiv.appendChild(copyButton);
+    codeBlockPre.prepend(headerDiv);
+
+    copyButton.addEventListener("click", async () => {
+      await copyCode(codeBlock, copyButton);
+    });
+  }
+
+  async function copyCode(block: Element, button: HTMLButtonElement) {
+    const code = block.querySelector("code") as HTMLElement;
+    const text = code.innerText as string;
+    await navigator.clipboard.writeText(text);
+    button.innerText = "Copied!";
+
+    setTimeout(() => {
+      button.innerText = "Copy";
+    }, 750);
+  }
+</script>
