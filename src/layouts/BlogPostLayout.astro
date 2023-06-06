@@ -2,16 +2,19 @@
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
+import TableOfContent from "../components/TableOfContent.astro";
 
 type Blog = CollectionEntry<"blog">["data"];
 
+type Heading = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
 export interface Props extends Blog {
   readingTime: string;
-  headings: {
-    depth: number;
-    slug: string;
-    text: string;
-  };
+  headings: Heading[];
 }
 
 const {
@@ -28,44 +31,50 @@ const {
 ---
 
 <BaseLayout title={title} description={description}>
-  <article
-    class="prose max-w-none prose-slate prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-xl dark:prose-invert"
+  <div
+    class="md:flex space-x-10 prose max-w-none prose-slate prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-xl dark:prose-invert"
   >
-    <h1>{title}</h1>
-    <div class="font-semibold text-xs uppercase space-y-2">
-      <div class="flex items-center space-x-1">
-        <span>
-          Published on <FormattedDate date={pubDate} />
-        </span>
-        {
-          updatedDate && (
-            <>
-              <span>{"•"}</span>
-              <span>
-                Updated on <FormattedDate date={updatedDate} />
-              </span>
-            </>
-          )
-        }
-        <span>{"•"}</span>
-        <span>{readingTime}</span>
+    <article class="w-full">
+      <h1>{title}</h1>
+      <div class="font-semibold text-xs uppercase space-y-2">
+        <div class="flex flex-wrap items-center space-x-1">
+          <span>
+            Published on <FormattedDate date={pubDate} />
+          </span>
+          {
+            updatedDate && (
+              <>
+                <span>{"•"}</span>
+                <span>
+                  Updated on <FormattedDate date={updatedDate} />
+                </span>
+              </>
+            )
+          }
+          <span>{"•"}</span>
+          <span>{readingTime}</span>
+        </div>
+        <div class="flex space-x-2 items-center">
+          {
+            tags.map((tag) => (
+              <a
+                href={`/tags/${tag}`}
+                class="no-underline bg-slate-700 hover:bg-slate-600 p-1 px-2 rounded-sm"
+              >
+                {tag}
+              </a>
+            ))
+          }
+        </div>
       </div>
-      <div class="flex space-x-2 items-center">
-        {
-          tags.map((tag) => (
-            <a
-              href={`/tags/${tag}`}
-              class="no-underline bg-slate-700 hover:bg-slate-600 p-1 px-2 rounded-sm"
-            >
-              {tag}
-            </a>
-          ))
-        }
-      </div>
-    </div>
-    {heroImage && <img src={heroImage} alt={heroImageAlt} />}
-    <slot />
-  </article>
+      {heroImage && <img src={heroImage} alt={heroImageAlt} />}
+      <slot />
+    </article>
+    <nav class="hidden lg:block lg:w-4/12 h-screen sticky top-0">
+      <span class="text-white font-semibold uppercase">Table of Contents</span>
+      <TableOfContent headings={headings} />
+    </nav>
+  </div>
 </BaseLayout>
 
 <script>

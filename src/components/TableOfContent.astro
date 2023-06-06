@@ -1,0 +1,42 @@
+---
+import TableOfContentHeading from "./TableOfContentHeading.astro";
+
+type TableOfContent = {
+  depth: number;
+  text: string;
+  slug: string;
+  subheadings: TableOfContent[];
+};
+
+type Heading = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
+function buildToc(headings: Heading[]): TableOfContent[] {
+  const toc: TableOfContent[] = [];
+  const parentHeadings = new Map();
+
+  headings.forEach((h) => {
+    const heading = { ...h, subheadings: new Array<TableOfContent>() };
+    parentHeadings.set(heading.depth, heading);
+
+    if (heading.depth === 2) {
+      toc.push(heading);
+    } else {
+      parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+    }
+  });
+
+  return toc;
+}
+
+const { headings } = Astro.props;
+
+const toc = buildToc(headings);
+---
+
+<ul>
+  {toc.map((heading) => <TableOfContentHeading heading={heading} />)}
+</ul>

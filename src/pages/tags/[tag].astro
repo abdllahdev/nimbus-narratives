@@ -19,6 +19,6 @@ const posts = (await getCollection("blog"))
 ---
 
 <BaseLayout>
-  <h1 class="text-white uppercase text-5xl">{tag}</h1>
+  <h1 class="text-white uppercase font-black text-4xl">{tag}</h1>
   <PostsList posts={posts} />
 </BaseLayout>
