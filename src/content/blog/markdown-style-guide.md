@@ -1,7 +1,9 @@
 ---
 title: "Markdown Style Guide"
 description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-tags: ["md", "mdx"]
+tags:
+  - markdown
+  - guide
 pubDate: "Jul 01 2022"
 ogImage: "/placeholder-hero.jpg"
 ---

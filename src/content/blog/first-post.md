@@ -1,7 +1,8 @@
 ---
 title: "First post"
 description: "Lorem ipsum dolor sit amet"
-tags: ["test", "md", "mdx"]
+tags:
+  - first-post
 pubDate: "Jul 08 2022"
 ogImage: "/placeholder-hero.jpg"
 ---

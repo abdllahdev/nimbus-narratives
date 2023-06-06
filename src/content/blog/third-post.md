@@ -1,7 +1,8 @@
 ---
 title: "Third post"
 description: "Lorem ipsum dolor sit amet"
-tags: ["test", "md", "mdx"]
+tags:
+  - third-post
 pubDate: "Jul 15 2022"
 ogImage: "/placeholder-hero.jpg"
 ---

@@ -5,6 +5,7 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     tags: z.string().array(),
+    draft: z.boolean().default(false),
     pubDate: z
       .string()
       .or(z.date())

@@ -3,35 +3,59 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Blog = CollectionEntry<"blog">["data"];
 
-const { title, description, tags, pubDate, updatedDate, ogImage, ogImageAlt } = Astro.props;
+export interface Props extends Blog {
+  readingTime: string;
+  headings: {
+    depth: number;
+    slug: string;
+    text: string;
+  };
+}
+
+const {
+  title,
+  description,
+  tags,
+  pubDate,
+  updatedDate,
+  ogImage,
+  ogImageAlt,
+  readingTime,
+  headings,
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
   <article
-    class="prose max-w-none prose-slate prose-a:underline-offset-2 prose-a:decoration-blue-600 dark:prose-invert"
+    class="prose max-w-none prose-slate prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-xl dark:prose-invert"
   >
-    <h1 class="text-4xl text-white">{title}</h1>
-    <div class="space-y-3">
-      <div class="flex flex-col font-bold text-xs uppercase space-y-1">
+    <h1>{title}</h1>
+    <div class="font-semibold text-xs uppercase space-y-2">
+      <div class="flex items-center space-x-1">
         <span>
           Published on <FormattedDate date={pubDate} />
         </span>
         {
           updatedDate && (
-            <span>
-              Updated on <FormattedDate date={updatedDate} />
-            </span>
+            <>
+              <span>{"•"}</span>
+              <span>
+                Updated on <FormattedDate date={updatedDate} />
+              </span>
+            </>
           )
         }
+        <span>{"•"}</span>
+        <span>{readingTime}</span>
       </div>
-      <div class="flex space-x-2 items-center font-bold text-xs uppercase">
+      <div class="flex space-x-2 items-center">
         {
           tags.map((tag) => (
             <a
               href={`/tags/${tag}`}
-              class="no-underline bg-slate-500/30 hover:bg-slate-500/50 p-1 px-3 rounded-sm"
+              class="no-underline bg-slate-700 hover:bg-slate-600 p-1 px-2 rounded-sm"
             >
               {tag}
             </a>
