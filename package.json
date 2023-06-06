@@ -24,6 +24,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.9",
     "astro": "^2.5.0",
+    "astro-icon": "^0.8.1",
     "mdast-util-to-string": "^3.2.0",
     "preact": "^10.6.5",
     "reading-time": "^1.5.0",
@@ -36,7 +37,6 @@
     "unist-util-visit": "^4.1.2"
   },
   "devDependencies": {
-    "astro-icon": "^0.8.0",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.10.0"
   }

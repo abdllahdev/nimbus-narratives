@@ -3,7 +3,7 @@ div[data-rehype-pretty-code-fragment] {
 }
 
 div[data-rehype-pretty-code-fragment] pre {
-  @apply p-0 pb-4 rounded-lg overflow-x-auto bg-slate-950;
+  @apply p-0 pb-4 pt-4 rounded-t-none rounded-lg overflow-x-auto bg-slate-950;
 }
 
 div[data-rehype-pretty-code-fragment] code {

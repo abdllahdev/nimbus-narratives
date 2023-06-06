@@ -37,6 +37,8 @@ const { headings } = Astro.props;
 const toc = buildToc(headings);
 ---
 
-<ul>
-  {toc.map((heading) => <TableOfContentHeading heading={heading} />)}
-</ul>
+<div class="not-prose">
+  <ul class="space-y-1">
+    {toc.map((heading) => <TableOfContentHeading heading={heading} />)}
+  </ul>
+</div>

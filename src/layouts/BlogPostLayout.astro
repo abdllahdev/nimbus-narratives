@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import TableOfContent from "../components/TableOfContent.astro";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 type Blog = CollectionEntry<"blog">["data"];
 
@@ -32,48 +33,59 @@ const {
 
 <BaseLayout title={title} description={description}>
   <div
-    class="md:flex space-x-10 prose max-w-none prose-slate prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-xl dark:prose-invert"
+    class="prose max-w-none prose-slate prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-xl dark:prose-invert"
   >
-    <article class="w-full">
-      <h1>{title}</h1>
-      <div class="font-semibold text-xs uppercase space-y-2">
-        <div class="flex flex-wrap items-center space-x-1">
-          <span>
-            Published on <FormattedDate date={pubDate} />
-          </span>
-          {
-            updatedDate && (
-              <>
-                <span>{"•"}</span>
-                <span>
-                  Updated on <FormattedDate date={updatedDate} />
-                </span>
-              </>
-            )
-          }
-          <span>{"•"}</span>
-          <span>{readingTime}</span>
-        </div>
-        <div class="flex space-x-2 items-center">
-          {
-            tags.map((tag) => (
-              <a
-                href={`/tags/${tag}`}
-                class="no-underline bg-slate-700 hover:bg-slate-600 p-1 px-2 rounded-sm"
-              >
-                {tag}
-              </a>
-            ))
-          }
-        </div>
+    <h1>{title}</h1>
+    <div class="font-semibold text-xs uppercase space-y-2">
+      <div class="flex flex-wrap items-center space-x-1">
+        <span>
+          Published on <FormattedDate date={pubDate} />
+        </span>
+        {
+          updatedDate && (
+            <>
+              <span>{"•"}</span>
+              <span>
+                Updated on <FormattedDate date={updatedDate} />
+              </span>
+            </>
+          )
+        }
+        <span>{"•"}</span>
+        <span>{readingTime}</span>
       </div>
-      {heroImage && <img src={heroImage} alt={heroImageAlt} />}
-      <slot />
-    </article>
-    <nav class="hidden lg:block lg:w-4/12 h-screen sticky top-0">
-      <span class="text-white font-semibold uppercase">Table of Contents</span>
-      <TableOfContent headings={headings} />
-    </nav>
+      <div class="flex space-x-2 items-center">
+        {
+          tags.map((tag) => (
+            <a
+              href={`/tags/${tag}`}
+              class="no-underline bg-slate-700 hover:bg-slate-600 p-1 px-2 rounded-sm"
+            >
+              {tag}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    {heroImage && <img src={heroImage} alt={heroImageAlt} />}
+    <div class="md:flex space-x-10">
+      <article class="w-full">
+        <slot />
+      </article>
+
+      {
+        headings.length > 0 && (
+          <nav class="hidden text-sm py-6 space-y-4 lg:block lg:w-4/12 h-screen sticky top-0">
+            <span class="text-blue-400 uppercase">On This Page</span>
+            <TableOfContent headings={headings} />
+            <div class="border-b-[0.5px]" />
+            <div class="flex float-right">
+              <ScrollToTopButton client:idle />
+            </div>
+          </nav>
+        )
+      }
+    </div>
   </div>
 </BaseLayout>
 
@@ -95,7 +107,8 @@ const {
 
     // Header div
     const headerDiv = document.createElement("div");
-    headerDiv.className = "flex w-full text-base items-center justify-between py-2 px-4";
+    headerDiv.className =
+      "flex w-full bg-slate-950 border-b-[0.5px] border-blue-400 rounded-t-lg mt-10 text-base items-center justify-between py-2 px-4";
 
     // Current title
     const titleDiv = codeBlock.querySelector("div[data-rehype-pretty-code-title]");
@@ -111,7 +124,7 @@ const {
 
     headerDiv.appendChild(titleSpan);
     headerDiv.appendChild(copyButton);
-    codeBlockPre.prepend(headerDiv);
+    codeBlock.prepend(headerDiv);
 
     copyButton.addEventListener("click", async () => {
       await copyCode(codeBlock, copyButton);
