@@ -5,7 +5,7 @@ tags:
   - markdown
   - guide
 pubDate: "Jul 01 2022"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/placeholder-hero.png"
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
@@ -26,7 +26,7 @@ Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptio
 
 ## Images
 
-![This is a placeholder image description](/placeholder-social.jpg)
+![This is a placeholder image description](/placeholder-hero.png)
 
 ## Blockquotes
 

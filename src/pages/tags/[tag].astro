@@ -7,18 +7,18 @@ export async function getStaticPaths() {
   const posts = await getCollection("blog");
   const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
   return tags.map((tag) => ({
-    params: { tag },
+    params: { tag: tag.slice(1) },
   }));
 }
 
-const { tag } = Astro.params;
+const { tag: t } = Astro.params;
 
 const posts = (await getCollection("blog"))
-  .filter((post) => post.data.tags.includes(tag))
+  .filter((post) => post.data.tags.includes(`#${t}`))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout>
-  <h1 class="text-white uppercase font-black text-4xl">{tag}</h1>
+<BaseLayout title={`Posts about #${t?.toUpperCase()}`}>
+  <h1 class="text-white uppercase font-black text-4xl">{`#${t?.toUpperCase()}`}</h1>
   <PostsList posts={posts} />
 </BaseLayout>

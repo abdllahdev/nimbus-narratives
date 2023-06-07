@@ -31,9 +31,9 @@ const {
 } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} postMeta={{ pubDate, tags }}>
   <div
-    class="prose max-w-none prose-slate prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-xl dark:prose-invert"
+    class="prose prose-slate max-w-none prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-xl dark:prose-invert"
   >
     <h1>{title}</h1>
     <div class="font-semibold text-xs uppercase space-y-2">
@@ -58,7 +58,7 @@ const {
         {
           tags.map((tag) => (
             <a
-              href={`/tags/${tag}`}
+              href={`/tags/${tag.slice(1)}`}
               class="no-underline bg-slate-700 hover:bg-slate-600 p-1 px-2 rounded-sm"
             >
               {tag}
@@ -75,7 +75,7 @@ const {
 
       {
         headings.length > 0 && (
-          <nav class="hidden text-sm py-6 space-y-4 lg:block lg:w-4/12 h-screen sticky top-0">
+          <nav class="hidden text-sm py-6 space-y-2 lg:block lg:w-4/12 h-screen sticky top-0">
             <span class="text-blue-400 uppercase">On This Page</span>
             <TableOfContent headings={headings} />
             <div class="border-b-[0.5px]" />
