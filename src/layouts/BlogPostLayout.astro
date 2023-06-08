@@ -59,7 +59,7 @@ const {
           tags.map((tag) => (
             <a
               href={`/tags/${tag.slice(1)}`}
-              class="no-underline bg-slate-700 hover:bg-slate-600 p-1 px-2 rounded-sm"
+              class="no-underline bg-slate-300 hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-slate-600 p-1 px-2 rounded-sm"
             >
               {tag}
             </a>
@@ -76,9 +76,9 @@ const {
       {
         headings.length > 0 && (
           <nav class="hidden text-sm py-6 space-y-2 lg:block lg:w-4/12 h-screen sticky top-0">
-            <span class="text-blue-400 uppercase">On This Page</span>
+            <span class="font-black dark:text-white text-black uppercase">On This Page</span>
             <TableOfContent headings={headings} />
-            <div class="border-b-[0.5px]" />
+            <div class="border-slate-700 border-b-[1px]" />
             <div class="flex float-right">
               <ScrollToTopButton client:idle />
             </div>
@@ -97,7 +97,8 @@ const {
 
     // Copy button
     const copyButton = document.createElement("button");
-    copyButton.className = "p-1 px-2 rounded-md text-xs bg-slate-800 hover:bg-slate-700";
+    copyButton.className =
+      "p-1 px-2 rounded-md text-slate-300 text-xs bg-slate-800 hover:bg-slate-700";
     copyButton.innerHTML = "Copy";
 
     // Header title

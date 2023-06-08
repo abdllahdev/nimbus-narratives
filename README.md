@@ -2,7 +2,8 @@
 
 Features:
 
-- ✅ Minimal styling (Dark mode only)
+- ✅ Minimal styling
+- ✅ Light/Dark mode
 - ✅ 100/100 Lighthouse performance
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Sitemap support

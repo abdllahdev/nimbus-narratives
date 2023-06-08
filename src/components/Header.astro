@@ -1,5 +1,6 @@
 ---
 import { SITE_NAME } from "../consts";
+import ToggleTheme from "./ToggleTheme";
 ---
 
 <div class="flex justify-between items-center py-10">
@@ -7,17 +8,5 @@ import { SITE_NAME } from "../consts";
     class="text-4xl text-transparent font-black bg-clip-text py-1 bg-gradient-to-tr from-pink-400 via-purple-400 to-indigo-400 font-righteous"
     href="/">{SITE_NAME}</a
   >
-  <div class="space-x-0 hidden sm:block">
-    <a
-      href="https://twitter.com/algorizr"
-      target="_blank"
-      class="py-2 px-3 rounded-md hover:bg-slate-800">Twitter</a
-    >
-    <a
-      href="https://github.com/algorizr"
-      target="_blank"
-      class="py-2 px-3 rounded-md hover:bg-slate-800">GitHub</a
-    >
-    <a href="/rss.xml" target="_blank" class="py-2 px-3 rounded-md hover:bg-slate-800">RSS</a>
-  </div>
+  <ToggleTheme client:idle />
 </div>
