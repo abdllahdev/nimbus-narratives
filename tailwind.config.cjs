@@ -7,10 +7,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        righteous: ["Righteous", ...defaultTheme.fontFamily.sans],
+        sans: ["Helvetica Neue", ...defaultTheme.fontFamily.sans],
+        righteous: ["Righteous", "Helvetica Neue", ...defaultTheme.fontFamily.sans],
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/aspect-ratio")],
+  plugins: [require("@tailwindcss/typography")],
 };

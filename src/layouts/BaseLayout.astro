@@ -1,6 +1,4 @@
 ---
-import "@fontsource/righteous";
-import "@fontsource/inter";
 import "../styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
@@ -19,12 +17,12 @@ const { title, description, postMeta } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark font-sans text-slate-300 bg-slate-900">
   <head>
     <BaseHead title={title} description={description} postMeta={postMeta} />
   </head>
   <body
-    class="container mx-auto max-w-xs sm:max-w-lg lg:max-w-4xl md:max-w-2xl flex flex-col justify-between h-screen dark:bg-slate-900 dark:text-slate-400"
+    class="container mx-auto max-w-xs sm:max-w-lg lg:max-w-4xl md:max-w-2xl flex flex-col justify-between h-screen"
   >
     <Header />
     <main class="flex-grow py-10">
