@@ -2,7 +2,7 @@
 
 Features:
 
-- ✅ Minimal styling
+- ✅ Minimal styling (Dark mode only)
 - ✅ 100/100 Lighthouse performance
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Sitemap support
@@ -38,12 +38,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 📃 Todo
-
-- [x] Add tags to posts
-- [x] Add table of contents
-- [x] Add OG image generation
-- [ ] Add like, share and views
-- [ ] Add fuzzy search
-- [ ] Refactor types
