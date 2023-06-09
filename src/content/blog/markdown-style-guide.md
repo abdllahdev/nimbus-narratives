@@ -1,6 +1,6 @@
 ---
-title: "Markdown Style Guide"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
+title: "Markdown Style Guide Markdown Style Guide Markdown Style Guide Markdown Style Guide Markdown Style Guide"
+description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro. Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro. Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
 tags:
   - markdown
   - guide
