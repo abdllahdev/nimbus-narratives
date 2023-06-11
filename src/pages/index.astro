@@ -7,15 +7,19 @@ import PostsList from "../components/PostsList.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const posts = await getCollection("blog");
+
+const sortedPosts = posts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const featuredPosts = posts.filter((post) => post.data.featured);
 ---
 
 <BaseLayout>
   <div class="space-y-10">
     <div class="space-y-4">
-      <h1 class="text-3xl text-slate-700 dark:text-white font-black">
+      <h1 class="text-4xl text-slate-700 dark:text-white font-black">
         Hello there! <span
           class="text-transparent bg-clip-text bg-gradient-to-tr from-pink-400 via-purple-400 to-indigo-400"
           >I'm Abdullah</span
@@ -59,6 +63,20 @@ const posts = (await getCollection("blog")).sort(
         </a>
       </div>
     </div>
-    <PostsList posts={posts} />
+    {
+      featuredPosts.length > 0 && (
+        <div class="space-y-3">
+          <h1 class="text-3xl text-black dark:text-white">Featured Posts</h1>
+          <PostsList posts={featuredPosts} />
+        </div>
+      )
+    }
+    <div class="space-y-3">
+      <div class="flex items-end space-x-2">
+        <h1 class="text-3xl text-black dark:text-white">Latest Posts</h1>
+        <a href="/blog" class="underline decoration-blue-500">View all</a>
+      </div>
+      <PostsList posts={sortedPosts} />
+    </div>
   </div>
 </BaseLayout>

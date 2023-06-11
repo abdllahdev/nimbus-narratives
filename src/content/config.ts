@@ -1,3 +1,4 @@
+import { string } from "astro/zod";
 import { defineCollection, z } from "astro:content";
 
 const blog = defineCollection({
@@ -9,7 +10,9 @@ const blog = defineCollection({
         .string()
         .array()
         .transform((tags) => tags.map((tag) => `#${tag}`)),
-      draft: z.boolean().default(false),
+      draft: z.boolean().default(true),
+      featured: z.boolean().default(false),
+      series_id: z.string().optional(),
       pubDate: z
         .string()
         .or(z.date())
