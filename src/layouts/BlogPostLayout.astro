@@ -4,6 +4,7 @@ import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import TableOfContent from "../components/TableOfContent.astro";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import { Image } from "astro:assets";
 
 type Blog = CollectionEntry<"blog">["data"];
 
@@ -18,17 +19,8 @@ export interface Props extends Blog {
   headings: Heading[];
 }
 
-const {
-  title,
-  description,
-  tags,
-  pubDate,
-  updatedDate,
-  heroImage,
-  heroImageAlt,
-  readingTime,
-  headings,
-} = Astro.props;
+const { title, description, tags, pubDate, updatedDate, cover, coverAlt, readingTime, headings } =
+  Astro.props;
 ---
 
 <BaseLayout title={title} description={description} postMeta={{ pubDate, tags }}>
@@ -67,7 +59,7 @@ const {
         }
       </div>
     </div>
-    {heroImage && <img src={heroImage} alt={heroImageAlt} />}
+    {cover && coverAlt && <Image src={cover} alt={coverAlt} />}
     <div class="md:flex space-x-10">
       <article class="w-full">
         <slot />

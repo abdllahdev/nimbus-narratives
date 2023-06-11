@@ -38,7 +38,16 @@ export default defineConfig({
     rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
     remarkPlugins: [remarkReadingTime],
   },
+  experimental: {
+    assets: true,
+  },
   vite: {
-    plugins: [Icons({ compiler: "jsx", jsx: "preact", autoInstall: true })],
+    plugins: [
+      Icons({
+        compiler: "jsx",
+        jsx: "preact",
+        autoInstall: true,
+      }),
+    ],
   },
 });
