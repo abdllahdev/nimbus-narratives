@@ -40,7 +40,7 @@ const series = (await getCollection("series")).find((s) => s.data.id === seriesI
 
 <BaseLayout title={title} description={description} postMeta={{ pubDate, tags }}>
   <div
-    class="prose prose-slate max-w-none prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-lg dark:prose-invert"
+    class="prose prose-slate max-w-none prose-headings:scroll-my-20 prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-lg dark:prose-invert"
   >
     <h1>{title}</h1>
     <div class="font-semibold text-xs uppercase space-y-2">
