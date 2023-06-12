@@ -23,8 +23,9 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
 <BaseLayout>
   <div class="space-y-10">
     <div class="space-y-4">
-      <h1 class="text-4xl text-slate-700 dark:text-white font-black">
-        Hello there! <span class="underline underline-offset-2 decoration-fuchsia-400"
+      <h1 class="text-4xl text-black dark:text-white font-black">
+        Hello there! <span
+          class="underline underline-offset-2 decoration-fuchsia-600 dark:decoration-fuchsia-400"
           >I'm Abdullah</span
         >
       </h1>
@@ -80,7 +81,7 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
         <h1 class="text-3xl text-black dark:text-white">Latest Posts</h1>
         <a
           href="/blog"
-          class="inline-flex items-center justify-center py-0.5 px-3 bg-blue-600 hover:bg-blue-800 rounded-full text-sm text-slate-300"
+          class="inline-flex items-center justify-center py-0.5 px-3 bg-blue-600 hover:bg-blue-800 rounded-full text-sm text-white"
           >View all</a
         >
       </div>
@@ -93,7 +94,7 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
             <h1 class="text-3xl text-black dark:text-white">Featured Series</h1>
             <a
               href="/series"
-              class="inline-flex items-center justify-center py-0.5 px-3 bg-blue-600 hover:bg-blue-800 rounded-full text-sm text-slate-300"
+              class="inline-flex items-center justify-center py-0.5 px-3 bg-blue-600 hover:bg-blue-800 rounded-full text-sm text-white"
             >
               View all
             </a>

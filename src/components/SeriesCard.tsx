@@ -19,8 +19,8 @@ export default function ({ series, posts, order }: Props) {
   return (
     <div class="bg-slate-300 dark:bg-slate-800 rounded-lg">
       <button
-        class={`p-5 rounded-lg group text-left space-y-2 hover:bg-slate-400 dark:hover:bg-slate-700 ${
-          isOpen ? "border-b-2 border-blue-600 rounded-b-lg" : ""
+        class={`p-5 rounded-lg text-left space-y-2 hover:bg-slate-400 dark:hover:bg-slate-700 ${
+          isOpen ? "border-b-4 border-blue-600 rounded-b-lg bg-slate-400 dark:bg-slate-700" : ""
         }`}
         onClick={handleOnClick}
       >
@@ -52,7 +52,7 @@ export default function ({ series, posts, order }: Props) {
                     : "before:bg-black dark:before:bg-white"
                   : !post.data.planned
                   ? "before:bg-black dark:before:bg-white"
-                  : "before:bg-slate-500"
+                  : "before:bg-slate-500 text-slate-500"
               }`}
             >
               <a
@@ -60,12 +60,12 @@ export default function ({ series, posts, order }: Props) {
                 class={`space-x-2 font-medium ${
                   !post.data.planned
                     ? "underline underline-offset-2 text-black dark:text-white decoration-blue-600"
-                    : "text-slate-500"
+                    : "text-white0"
                 }`}
               >
                 <span>{post.data.title}</span>
                 {post.data.planned && (
-                  <span class="inline-flex items-center justify-center p-0.5 px-2 bg-yellow-400 rounded-full text-slate-900 text-xs">
+                  <span class="inline-flex items-center justify-center p-0.5 px-2 bg-yellow-400 rounded-full text-black text-xs">
                     Planned
                   </span>
                 )}
