@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<a
+  href={!post.data.planned ? `/blog/${post.slug}` : null}
+  class={`space-y-2 flex flex-col items-start rounded-lg p-5 ${
+    post.data.planned
+      ? "border-2 border-amber-500 bg-slate-100 dark:bg-slate-900"
+      : "bg-slate-300 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-700"
+  }`}
+>
+  <div class="space-y-1">
+    <div class="flex items-center space-x-2">
+      <h2 class="text-xl text-black dark:text-white font-bold">{post.data.title}</h2>
+      {
+        post.data.planned && (
+          <span class="flex items-center justify-center p-0.5 px-1.5 bg-amber-500 rounded-full text-black font-black text-xs">
+            Planned
+          </span>
+        )
+      }
+    </div>
+    <div class="flex flex-col">
+      <span class="flex items-center space-x-1 text-sm font-bold uppercase">
+        <FormattedDate date={post.data.pubDate} />
+        {post.data.tags.map((tag) => <span>{` • ${tag}`}</span>)}
+      </span>
+    </div>
+  </div>
+  <p>{post.data.description}</p>
+</a>

@@ -13,13 +13,13 @@ export interface Props {
 const { heading } = Astro.props;
 ---
 
-<li class="space-y-1">
+<li class="ml-4">
   <a class="hover:text-slate-400 dark:hover:text-white" href={"#" + heading.slug}>
     {heading.text}
   </a>
   {
     heading.subheadings.length > 0 && (
-      <ul class="pl-4 space-y-1">
+      <ul class="list-disc list-outside">
         {heading.subheadings.map((subheading) => (
           <Astro.self heading={subheading} />
         ))}
