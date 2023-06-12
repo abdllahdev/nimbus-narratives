@@ -1,0 +1,17 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import SCard from "./SeriesCard";
+
+export interface Props {
+  series: CollectionEntry<"series">;
+  order?: number;
+}
+
+const { series, order } = Astro.props;
+
+const posts = (await getCollection("blog"))
+  .filter((post) => series.data.id === post.data.seriesId)
+  .sort((a, b) => (a.data.orderInSeries as number) - (b.data.orderInSeries as number));
+---
+
+<SCard series={series} posts={posts} order={order} client:idle />

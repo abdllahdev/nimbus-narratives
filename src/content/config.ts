@@ -1,18 +1,27 @@
-import { string } from "astro/zod";
 import { defineCollection, z } from "astro:content";
 
 const blog = defineCollection({
   schema: ({ image }) =>
     z.object({
-      title: z.string(),
+      title: z.string().transform((t) =>
+        t
+          .toLowerCase()
+          .split(" ")
+          .map(function (word) {
+            return word.replace(word[0], word[0].toUpperCase());
+          })
+          .join(" ")
+      ),
       description: z.string(),
       tags: z
         .string()
         .array()
         .transform((tags) => tags.map((tag) => `#${tag}`)),
-      draft: z.boolean().default(true),
+      draft: z.boolean().default(false),
       featured: z.boolean().default(false),
-      series_id: z.string().optional(),
+      planned: z.boolean().default(false),
+      seriesId: z.string().optional(),
+      orderInSeries: z.number().optional(),
       pubDate: z
         .string()
         .or(z.date())
@@ -30,4 +39,13 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+const series = defineCollection({
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    featured: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, series };

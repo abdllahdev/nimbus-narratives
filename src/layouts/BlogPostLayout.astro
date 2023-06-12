@@ -1,10 +1,12 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { CollectionEntry, getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import TableOfContent from "../components/TableOfContent.astro";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import { Image } from "astro:assets";
+import SeriesList from "../components/SeriesList.astro";
+import SeriesCard from "../components/SeriesCard.astro";
 
 type Blog = CollectionEntry<"blog">["data"];
 
@@ -19,13 +21,26 @@ export interface Props extends Blog {
   headings: Heading[];
 }
 
-const { title, description, tags, pubDate, updatedDate, cover, coverAlt, readingTime, headings } =
-  Astro.props;
+const {
+  title,
+  description,
+  tags,
+  pubDate,
+  updatedDate,
+  cover,
+  coverAlt,
+  readingTime,
+  headings,
+  seriesId,
+  orderInSeries,
+} = Astro.props;
+
+const series = (await getCollection("series")).find((s) => s.data.id === seriesId);
 ---
 
 <BaseLayout title={title} description={description} postMeta={{ pubDate, tags }}>
   <div
-    class="prose prose-slate max-w-none prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-xl dark:prose-invert"
+    class="prose prose-slate max-w-none prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-lg dark:prose-invert"
   >
     <h1>{title}</h1>
     <div class="font-semibold text-xs uppercase space-y-2">
@@ -59,14 +74,21 @@ const { title, description, tags, pubDate, updatedDate, cover, coverAlt, reading
         }
       </div>
     </div>
-    {cover && coverAlt && <Image src={cover} alt={coverAlt} />}
+    <div class="not-prose">
+      {cover && coverAlt && <Image class="mt-10 mb-5 rounded-lg" src={cover} alt={coverAlt} />}
+    </div>
     <div class="md:flex space-x-10">
-      <article class="w-full">
-        <slot />
-      </article>
+      <div class="w-full">
+        <div class="not-prose my-5">
+          {series && <SeriesCard series={series} order={orderInSeries} />}
+        </div>
+        <article>
+          <slot />
+        </article>
+      </div>
       {
         headings.length > 0 && (
-          <nav class="hidden text-sm py-3 space-y-2 lg:block lg:w-4/12 h-screen sticky top-20 z-40">
+          <nav class="hidden text-sm space-y-2 my-1 py-3 lg:block lg:w-4/12 h-screen sticky top-20 z-40">
             <span class="font-black dark:text-white text-black uppercase">On This Page</span>
             <TableOfContent headings={headings} />
             <div class="border-slate-700 border-b-[1px]" />

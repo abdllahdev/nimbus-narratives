@@ -6,35 +6,39 @@ import MdiRss from "~icons/mdi/rss";
 import PostsList from "../components/PostsList.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import SeriesList from "../components/SeriesList.astro";
 
 const posts = await getCollection("blog");
 
 const sortedPosts = posts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .filter((post) => !post.data.planned)
   .slice(0, 3);
 
 const featuredPosts = posts.filter((post) => post.data.featured);
+
+const featuredSeries = (await getCollection("series")).filter((s) => s.data.featured);
 ---
 
 <BaseLayout>
   <div class="space-y-10">
     <div class="space-y-4">
       <h1 class="text-4xl text-slate-700 dark:text-white font-black">
-        Hello there! <span
-          class="text-transparent bg-clip-text bg-gradient-to-tr from-pink-400 via-purple-400 to-indigo-400"
+        Hello there! <span class="underline underline-offset-2 decoration-fuchsia-400"
           >I'm Abdullah</span
         >
       </h1>
       <p>
-        Welcome to my blog! I'm a software engineer with experience in <span class="text-yellow-400"
+        Welcome to my blog! I'm a software engineer with experience in <span class="font-black"
+          >OCaml</span
+        >, <span class="font-black">JavaScript/Typescript</span>, <span class="font-black"
           >Python</span
-        >, <span class="text-red-400">OCaml</span>, <span class="text-fuchsia-400"
-          >JavaScript/Typescript</span
-        >, <span class="text-sky-400">ReactJS</span>, and <span class="text-emerald-400"
-          >Node.js</span
-        >. As an enthusiastic learner, I aim to share my journey of exploration with you. Join me as
-        I write about various aspects of computer science, ranging from programming languages, AI,
-        web development, to theoretical computer science.
+        >, <span class="font-black">ReactJS</span>, and <span class="font-black">Node.js</span>. As
+        an enthusiastic learner, I aim to share my journey of exploration with you. Join me as I
+        write about various aspects of computer science, ranging from <span class="font-black"
+          >Programming Languages</span
+        >, <span class="font-black">AI</span>, <span class="font-black">Web Development</span>, to
+        <span class="font-black">Theoretical CS</span>.
       </p>
       <div class="space-x-1">
         <a
@@ -65,18 +69,38 @@ const featuredPosts = posts.filter((post) => post.data.featured);
     </div>
     {
       featuredPosts.length > 0 && (
-        <div class="space-y-3">
+        <div class="space-y-5">
           <h1 class="text-3xl text-black dark:text-white">Featured Posts</h1>
           <PostsList posts={featuredPosts} />
         </div>
       )
     }
-    <div class="space-y-3">
-      <div class="flex items-end space-x-2">
+    <div class="space-y-5">
+      <div class="flex items-center justify-between space-x-2">
         <h1 class="text-3xl text-black dark:text-white">Latest Posts</h1>
-        <a href="/blog" class="underline decoration-blue-500">View all</a>
+        <a
+          href="/blog"
+          class="inline-flex items-center justify-center py-0.5 px-3 bg-blue-600 hover:bg-blue-800 rounded-full text-sm text-slate-300"
+          >View all</a
+        >
       </div>
       <PostsList posts={sortedPosts} />
     </div>
+    {
+      featuredSeries.length > 0 && (
+        <div class="space-y-5">
+          <div class="flex items-center justify-between space-x-2">
+            <h1 class="text-3xl text-black dark:text-white">Featured Series</h1>
+            <a
+              href="/series"
+              class="inline-flex items-center justify-center py-0.5 px-3 bg-blue-600 hover:bg-blue-800 rounded-full text-sm text-slate-300"
+            >
+              View all
+            </a>
+          </div>
+          <SeriesList series={featuredSeries} />
+        </div>
+      )
+    }
   </div>
 </BaseLayout>

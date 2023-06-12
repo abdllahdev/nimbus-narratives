@@ -1,10 +1,12 @@
 ---
 title: "Second post"
 description: "Lorem ipsum dolor sit amet"
-tags:
-  - second-post
+seriesId: first-series
+orderInSeries: 2
 pubDate: "22 Jul 2022"
 updatedDate: "25 Jul 2023"
+tags:
+  - second-post
 ---
 
 ## Sub-Heading-1

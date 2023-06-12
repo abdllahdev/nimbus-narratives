@@ -31,6 +31,7 @@
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
+    "@iconify-json/material-symbols": "^1.1.47",
     "@iconify-json/mdi": "^1.1.52",
     "@iconify-json/ph": "^1.1.5",
     "@svgr/core": "^8.0.0",

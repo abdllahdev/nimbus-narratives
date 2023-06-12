@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+import AstroSeriesCard from "./SeriesCard.astro";
+
+export interface Props {
+  series: CollectionEntry<"series">[];
+}
+
+const { series } = Astro.props;
+---
+
+<section>
+  <ul class="flex flex-col space-y-4">
+    {
+      series.map((s) => (
+        <li>
+          <AstroSeriesCard series={s} />
+        </li>
+      ))
+    }
+  </ul>
+</section>

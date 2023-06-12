@@ -1,12 +1,15 @@
 ---
 title: "Markdown Style Guide Markdown Style Guide Markdown Style Guide Markdown Style Guide Markdown Style Guide"
 description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro. Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro. Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-tags:
-  - markdown
-  - guide
+featured: true
+seriesId: first-series
+orderInSeries: 5
 pubDate: "Jul 01 2022"
 cover: "~/assets/placeholder-hero.png"
 coverAlt: "Hero Image"
+tags:
+  - markdown
+  - guide
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
