@@ -22,10 +22,10 @@ const { title, description, postMeta } = Astro.props;
     <BaseHead title={title} description={description} postMeta={postMeta} />
   </head>
   <body
-    class="container mx-auto md:max-w-4xl px-3 space-y-20 flex flex-col justify-between h-screen text-slate-700 bg-slate-100 dark:text-slate-300 dark:bg-slate-900"
+    class="relative container mx-auto md:max-w-4xl px-3 space-y-10 flex flex-col justify-between h-screen text-slate-700 bg-slate-100 dark:text-slate-300 dark:bg-slate-900"
   >
     <Header />
-    <main class="flex-grow">
+    <main class="flex-grow pt-20">
       <slot />
     </main>
     <Footer />
