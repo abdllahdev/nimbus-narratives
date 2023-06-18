@@ -1,6 +1,8 @@
-# algorizr.com
+# Personal Website using Astro and Tailwind
 
-Features:
+Check out the [demo](https://algorizr.com) 
+
+## Features
 
 - ✅ Minimal styling
 - ✅ Light/Dark mode
