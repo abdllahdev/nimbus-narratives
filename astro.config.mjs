@@ -30,7 +30,7 @@ const rehypePrettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://algorizr.com",
+  site: "https://example.com",
   integrations: [mdx(), sitemap(), tailwind(), preact(), compress()],
   markdown: {
     extendDefaultPlugins: true,

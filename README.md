@@ -1,6 +1,4 @@
-# Personal Website using Astro and Tailwind
-
-Check out the [demo](https://algorizr.com) 
+# Personal Blog using Astro 2.0 and TailwindCSS
 
 ## Features
 
@@ -11,6 +9,7 @@ Check out the [demo](https://algorizr.com)
 - ✅ Sitemap support
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
+- ✅ Post series
 
 ## 🚀 Project Structure
 
