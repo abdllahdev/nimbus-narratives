@@ -1,5 +1,11 @@
 ---
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from "../consts";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  TWITTER_HANDLE,
+  CLOUDINARY_NAME,
+} from "../consts";
 
 export interface Props {
   title?: string;
@@ -33,7 +39,7 @@ function getOgImage({
   };
 }) {
   const encode = (str: string) => encodeURIComponent(encodeURIComponent(str));
-  const meta = ["algorizr.com"];
+  const meta = ["example.com"];
 
   if (postMeta) {
     meta.push(
@@ -48,7 +54,7 @@ function getOgImage({
 
   return [
     // Add your own Cloudinary account ID.
-    `https://res.cloudinary.com/algorizr-com/image/upload`,
+    `https://res.cloudinary.com/${CLOUDINARY_NAME}/image/upload`,
 
     // Composed Image Transformations
     `w_1920,h_933,q_100`,
@@ -65,7 +71,7 @@ function getOgImage({
 
     // PROFILE IMAGE
     // dynamically fetched from my twitter profile
-    `l_twitter_name:algorizr`,
+    `l_twitter_name:${TWITTER_HANDLE}`,
     // Transformations
     `c_thumb,g_face,r_max,w_380,h_380,q_100`,
     // Positioning

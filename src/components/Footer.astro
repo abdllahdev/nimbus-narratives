@@ -3,6 +3,7 @@ import MdiTwitter from "~icons/mdi/twitter";
 import MdiGithub from "~icons/mdi/github";
 import MdiRss from "~icons/mdi/rss";
 import MdiSitemap from "~icons/mdi/sitemap";
+import { GITHUB_HANDLE, TWITTER_HANDLE } from "../consts";
 
 const today = new Date();
 ---
@@ -11,7 +12,7 @@ const today = new Date();
   <p>&copy; {today.getFullYear()} Abdullah Elsayed</p>
   <div class="flex items-center space-x-1">
     <a
-      href="https://twitter.com/algorizr"
+      href={TWITTER_HANDLE}
       target="_blank"
       class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-slate-300 dark:hover:bg-slate-800"
     >
@@ -19,7 +20,7 @@ const today = new Date();
       <span class="sr-only">Twitter</span>
     </a>
     <a
-      href="https://github.com/algorizr"
+      href={GITHUB_HANDLE}
       target="_blank"
       class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-slate-300 dark:hover:bg-slate-800"
     >

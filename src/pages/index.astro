@@ -7,6 +7,7 @@ import PostsList from "../components/PostsList.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import SeriesList from "../components/SeriesList.astro";
+import { TWITTER_HANDLE, GITHUB_HANDLE } from "../consts";
 
 const posts = await getCollection("blog");
 
@@ -43,7 +44,7 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
       </p>
       <div class="space-x-1">
         <a
-          href="https://twitter.com/algorizr"
+          href={TWITTER_HANDLE}
           target="_blank"
           class="inline-flex items-center justify-center space-x-2 py-2 px-3 rounded-md bg-slate-300 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-700"
         >
@@ -51,7 +52,7 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
           <span>Twitter</span>
         </a>
         <a
-          href="https://github.com/algorizr"
+          href={GITHUB_HANDLE}
           target="_blank"
           class="inline-flex items-center justify-center space-x-2 py-2 px-3 rounded-md bg-slate-300 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-700"
         >
