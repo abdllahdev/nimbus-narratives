@@ -5,7 +5,6 @@ import tailwind from "@astrojs/tailwind";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkReadingTime from "./src/plugins/remark-reading-time.mjs";
 import preact from "@astrojs/preact";
-import compress from "astro-compress";
 import Icons from "unplugin-icons/vite";
 
 const rehypePrettyCodeOptions = {
@@ -31,7 +30,7 @@ const rehypePrettyCodeOptions = {
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
-  integrations: [mdx(), sitemap(), tailwind(), preact(), compress()],
+  integrations: [mdx(), sitemap(), tailwind(), preact()],
   markdown: {
     extendDefaultPlugins: true,
     syntaxHighlight: false,
