@@ -1,5 +1,7 @@
 # Personal Blog using Astro 2.0 and TailwindCSS
 
+<img src="https://res.cloudinary.com/abdllah-dev/image/upload/v1692421593/nimbus-narratives.png" alt="Nimbus Narratives" style="width:100%;" />
+
 ## Features
 
 - ✅ Minimal styling
