@@ -1,6 +1,6 @@
 # Personal Blog using Astro 2.0 and TailwindCSS
 
-<img src="https://res.cloudinary.com/abdllah-dev/image/upload/v1692421593/nimbus-narratives.png" alt="Nimbus Narratives" style="width:100%;" />
+![nimbus-narratives-1](https://github.com/abdllahdev/nimbus-narratives/assets/11673834/8e482adb-d1aa-424c-94d3-b8f930f7e67d)
 
 ## Features
 
