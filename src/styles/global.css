@@ -10,6 +10,11 @@
   font-display: swap;
 }
 
+html
+{
+  scroll-behavior:smooth;
+}
+
 div[data-rehype-pretty-code-fragment] {
   @apply space-y-0;
 }
