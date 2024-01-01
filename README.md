@@ -1,4 +1,4 @@
-# Personal Blog using Astro 2.0 and TailwindCSS
+# Personal Blog using Astro 2.0, Preact, and TailwindCSS
 
 ![nimbus-narratives-1](https://github.com/abdllahdev/nimbus-narratives/assets/11673834/8e482adb-d1aa-424c-94d3-b8f930f7e67d)
 
