@@ -1,8 +1,10 @@
 @font-face {
   font-family: "Righteous";
   src: url("/fonts/Righteous.eot");
-  src: url("/fonts/Righteous.eot?#iefix") format("embedded-opentype"),
-    url("/fonts/Righteous.woff2") format("woff2"), url("/fonts/Righteous.woff") format("woff"),
+  src:
+    url("/fonts/Righteous.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Righteous.woff2") format("woff2"),
+    url("/fonts/Righteous.woff") format("woff"),
     url("/fonts/Righteous.ttf") format("truetype"),
     url("/fonts/Righteous.svg#Righteous") format("svg");
   font-weight: normal;
@@ -10,29 +12,32 @@
   font-display: swap;
 }
 
-div[data-rehype-pretty-code-fragment] {
+figure[data-rehype-pretty-code-figure] {
   @apply space-y-0;
 }
 
-div[data-rehype-pretty-code-fragment] pre {
+figure[data-rehype-pretty-code-figure] pre {
   @apply p-0 py-2 rounded-t-none rounded-lg overflow-x-auto bg-slate-950;
 }
 
-div[data-rehype-pretty-code-fragment] code {
+figure[data-rehype-pretty-code-figure] code {
   counter-reset: line;
-  @apply flex flex-col;
 }
 
-div[data-rehype-pretty-code-fragment] .line::before {
+span[data-line]::before {
   counter-increment: line;
   content: counter(line);
-  @apply pr-4;
+  @apply px-3 border-l-4 border-transparent text-slate-400;
 }
 
-div[data-rehype-pretty-code-fragment] .line {
-  @apply border-l-4 border-transparent px-3;
+span[data-line] {
+  @apply flex;
 }
 
-div[data-rehype-pretty-code-fragment] .highlighted {
-  @apply border-blue-400 bg-blue-400/20;
+span[data-highlighted-line]::before {
+  @apply border-blue-400;
+}
+
+span[data-highlighted-line] {
+  @apply bg-blue-400/20;
 }

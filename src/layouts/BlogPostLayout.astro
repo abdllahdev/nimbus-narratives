@@ -103,10 +103,14 @@ const series = (await getCollection("series")).find((s) => s.data.id === seriesI
 </BaseLayout>
 
 <script>
-  const codeBlocks = Array.from(document.querySelectorAll("div[data-rehype-pretty-code-fragment]"));
+  const codeBlocks = Array.from(
+    document.querySelectorAll("figure[data-rehype-pretty-code-figure]"),
+  );
 
   for (let codeBlock of codeBlocks) {
     const codeBlockPre = codeBlock.getElementsByTagName("pre")[0];
+
+    codeBlockPre.removeAttribute("style");
 
     // Copy button
     const copyButton = document.createElement("button");
@@ -124,7 +128,7 @@ const series = (await getCollection("series")).find((s) => s.data.id === seriesI
       "flex w-full bg-slate-950 border-b-[0.5px] border-blue-400 rounded-t-lg mt-10 text-base items-center justify-between py-2 px-4";
 
     // Current title
-    const titleDiv = codeBlock.querySelector("div[data-rehype-pretty-code-title]");
+    const titleDiv = codeBlock.querySelector("figcaption[data-rehype-pretty-code-title]");
 
     // Set title to the language name if no current title is set
     if (titleDiv) {

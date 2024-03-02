@@ -4,7 +4,7 @@ description: "Lorem ipsum dolor sit amet"
 seriesId: first-series
 orderInSeries: 3
 pubDate: "Jul 15 2022"
-cover: "~/assets/placeholder-hero.png"
+cover: "../../assets/placeholder-hero.png"
 coverAlt: "Hero Image"
 tags:
   - third-post

@@ -5,7 +5,7 @@ featured: true
 seriesId: first-series
 orderInSeries: 5
 pubDate: "Jul 01 2022"
-cover: "~/assets/placeholder-hero.png"
+cover: "../../assets/placeholder-hero.png"
 coverAlt: "Hero Image"
 tags:
   - markdown
@@ -30,7 +30,7 @@ Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptio
 
 ## Images
 
-![This is a placeholder image description](~/assets/placeholder-social.png)
+![This is a placeholder image description](../../assets/placeholder-social.png)
 
 ## Blockquotes
 

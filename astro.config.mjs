@@ -7,26 +7,6 @@ import remarkReadingTime from "./src/plugins/remark-reading-time.mjs";
 import preact from "@astrojs/preact";
 import Icons from "unplugin-icons/vite";
 
-const rehypePrettyCodeOptions = {
-  theme: "dracula",
-  onVisitLine(node) {
-    if (node.children.length === 0) {
-      node.children = [
-        {
-          type: "text",
-          value: " ",
-        },
-      ];
-    }
-  },
-  onVisitHighlightedLine(node) {
-    node.properties.className.push("highlighted");
-  },
-  onVisitHighlightedWord(node) {
-    node.properties.className = ["word"];
-  },
-};
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
@@ -34,11 +14,8 @@ export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
     syntaxHighlight: false,
-    rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
+    rehypePlugins: [rehypePrettyCode],
     remarkPlugins: [remarkReadingTime],
-  },
-  experimental: {
-    assets: true,
   },
   vite: {
     plugins: [
